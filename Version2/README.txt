@@ -1,6 +1,6 @@
 ###########################################################################################################
 
- Ce programme permet de lire les fichiers log de l'active directory ( *.evtx) et de resortir des
+ Ce programme permet de lire les fichiers logs de l'active directory ( *.evtx) et de resortir des
  informations precises.
 
  La recherche se fait par fichier.
