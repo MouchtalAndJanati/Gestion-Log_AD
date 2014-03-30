@@ -16,7 +16,7 @@
     Bien évidemement, pour pouvoir gerer les Logs Active directory, il faut disposer d'un serveur Microsoft
     sur lequel Active directory est installé et configurer.
 
-    Je n'explique pas comment on installer et on configure un serveur Microsoft.
+    Nous n'expliquons pas comment on installer et on configure un serveur Microsoft.
     Par contre, le fichier nommé "Install.txt" contient un script qui permet d'installer Active directory.
 
     Le fichier nommé DHCP.c est un programme qui permet de lire le fichier LOG du serveur DHCP.

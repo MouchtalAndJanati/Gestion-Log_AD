@@ -4,12 +4,12 @@
  informations precises.
 
  La recherche se fait par fichier.
- Comme on le sait, sur Windows, il y a 4 type d'évenements.
+ Comme on le sait, sur Windows, il y a 4 types d'évenements.
 	
-	- Les événement Application
-	- Les événement Système
-	- Les événement Sécurité
-	- Les événement Setup
+	- Les événements Application
+	- Les événements Système
+	- Les événements Sécurité
+	- Les événements Setup
 
  Le programme commence par afficher un Menu, et selon le choix fait, le programme va chercher les 
  informations dans les fichiers.
