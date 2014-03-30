@@ -4,11 +4,6 @@
 #include <strsafe.h>
 #include "cconio.h"
 #include <iostream>
-
-
-
-
-
 #define MAX_TIMESTAMP_LEN       23 + 1   // mm/dd/yyyy hh:mm:ss.mmm
 #define MAX_RECORD_BUFFER_SIZE  0x70000  
 #define CATEGORY_RESOURCE_DLL        L"CUELECategory.dll" //Category File Maessage
@@ -47,7 +42,6 @@ HANDLE GetCategoryResources()
 
     return hResources;
 }
-
 //LoadLibrary Event Resources
 HANDLE GetEventResources()
 {
@@ -62,8 +56,6 @@ HANDLE GetEventResources()
     return hResources;
 }
 
-
-
 void main(void)
 {
 	
@@ -77,7 +69,7 @@ void main(void)
     std::wstring fileName =L"";
 	
 	int choix;
-retour :
+	retour :
 	menu(); // Menu of Application
 	scanf("%d",&choix);
 	system("cls");
@@ -99,7 +91,6 @@ retour :
 	s += L"/";
 	s += fileName;
 
-
     hEventLog = OpenBackupEventLog(NULL,s.c_str()); // source name
     
     if (NULL == hEventLog)
@@ -108,8 +99,6 @@ retour :
 		getch();
         goto cleanup;
     }
-
-
 	g_hResources = GetEventResources();
 	category_hResources = GetCategoryResources();
     // Allocate an initial block of memory used to read event records. 
@@ -121,7 +110,6 @@ retour :
         wprintf(L"Failed to allocate the initial memory for the record buffer.\n");
         goto cleanup;
     }
-
     // Read blocks of records until you reach the end of the log or an 
     // error occurs. The records are read from newest to oldest. If the buffer
     // is not big enough to hold a complete event record, reallocate the buffer.
@@ -204,10 +192,6 @@ cleanup:
     if (pBuffer)
         free(pBuffer);
 }
-
-
-
-
 // Loop through the buffer and print the contents of each record 
 // in the buffer.
 DWORD DumpRecordsInBuffer(PBYTE pBuffer, DWORD dwBytesRead,int id)
@@ -285,8 +269,6 @@ DWORD DumpRecordsInBuffer(PBYTE pBuffer, DWORD dwBytesRead,int id)
     getchar();
     return status;
 }
-
-
 // Get an index value to the pEventTypeNames array based on 
 // the event type value.
 DWORD GetEventTypeName(DWORD EventType)
@@ -315,11 +297,8 @@ DWORD GetEventTypeName(DWORD EventType)
 
     return index;
 }
-
-
 // Formats the specified message. If the message uses inserts, build
 // the argument list to pass to FormatMessage.
-
 LPWSTR GetCategoryString(DWORD MessageId)
 {
     LPWSTR pMessage = NULL;
@@ -339,7 +318,6 @@ LPWSTR GetCategoryString(DWORD MessageId)
     }
     return pMessage;
 }
-
 
 LPWSTR GetMessageString(DWORD MessageId, DWORD argc, LPWSTR argv)
 {
@@ -384,7 +362,6 @@ LPWSTR GetMessageString(DWORD MessageId, DWORD argc, LPWSTR argv)
     return pMessage;
 }
 
-
 DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMessage)
 {
     DWORD status = ERROR_SUCCESS;
@@ -414,7 +391,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         pFinalMessage = NULL;
         goto cleanup;
     }
-
     // Allocate an array of pointers that will contain the beginning address 
     // of each parameter insertion string.
     cbBuffer = sizeof(LPWSTR) * dwParameterCount;
@@ -425,7 +401,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         status = ERROR_OUTOFMEMORY;
         goto cleanup;
     }
-
     RtlZeroMemory(pStartingAddresses, cbBuffer);
 
     // Allocate an array of pointers that will contain the ending address (one
@@ -437,7 +412,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         status = ERROR_OUTOFMEMORY;
         goto cleanup;
     }
-
     RtlZeroMemory(pEndingAddresses, cbBuffer);
 
     // Allocate an array of pointers that will contain pointers to the actual
@@ -449,7 +423,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         status = ERROR_OUTOFMEMORY;
         goto cleanup;
     }
-
     RtlZeroMemory(pParameters, cbBuffer);
 
     // Allocate an array of DWORDs that will contain the message identifier
@@ -461,7 +434,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         status = ERROR_OUTOFMEMORY;
         goto cleanup;
     }
-
     RtlZeroMemory(pParameterIDs, cbBuffer);
 
     // Find each parameter in pMessage and get the pointer to the
@@ -485,7 +457,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
             i++;
         }
     }
-
     // For each parameter, we use the message identifier to get the
     // actual parameter string.
     for (DWORD i = 0; i < dwParameterCount; i++)
@@ -500,7 +471,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
 
         cchParameters += wcslen(pParameters[i]);
     }
-
     // Allocate enough memory for pFinalMessage based on the length of pMessage
     // and the length of each parameter string. The pFinalMessage buffer will contain 
     // the completed parameter substitution.
@@ -513,7 +483,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
         status = ERROR_OUTOFMEMORY;
         goto cleanup;
     }
-
     RtlZeroMemory(pFinalMessage, cbBuffer);
     cchBuffer = cbBuffer / sizeof(WCHAR);
     pTempFinalMessage = pFinalMessage;
@@ -535,7 +504,6 @@ DWORD ApplyParameterStringsToMessage(CONST LPCWSTR pMessage, LPWSTR & pFinalMess
 
         pTempFinalMessage += cch;
     }
-
     // Append the last segment from pMessage, which is ".".
     wcscpy_s(pTempFinalMessage, cchBuffer, pTempMessage);
 
@@ -561,7 +529,6 @@ cleanup:
 
     return status;
 }
-
 
 // Get a string that contains the time stamp of when the event 
 // was generated.

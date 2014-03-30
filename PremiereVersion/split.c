@@ -2,7 +2,6 @@
 #include<string.h>
 #include<stdlib.h>
 #include <ctype.h>
-
 #define NUL '\0'
 
 FILE * ouvrirUnFichier(char * nomFichier)
@@ -20,24 +19,14 @@ char * lireLigneDuFichier(FILE * f)
         line = malloc(500 * sizeof(char));
         fgets ( line, 500 * sizeof(char), f );
     }
-    return line;
-    
-        
-    
-    
-    
-    
+    return line;  
 }
 
 char *trim(char *str)
 {
     char *ibuf = str, *obuf = str;
     int i = 0, cnt = 0;
-    
-    /*
-     **  Trap NULL
-     */
-    
+       
     if (str)
     {
         
@@ -45,8 +34,6 @@ char *trim(char *str)
             ;
         if (str != ibuf)
             memmove(str, ibuf, ibuf - str);
-        
-  
         
         while (*ibuf)
         {
@@ -77,26 +64,22 @@ char *trim(char *str)
     return str;
 }
 
-
 char * split(FILE * f)
 {
-    while (1==1) {
-    char * str = lireLigneDuFichier(f);
-    char* token = strtok(str, ":");
+    while (1==1) 
+    {
+       char * str = lireLigneDuFichier(f);
+       char* token = strtok(str, ":");
     
-    token = strtok(NULL, ":");
+       token = strtok(NULL, ":");
     
-        
-        token = trim(token);
+       token = trim(token);
   
-    if(token != NULL)
-    return token;
+       if(token != NULL)
+       return token;
     }
-
-   
 }
 
-/*
 int main()
 {
     
@@ -105,4 +88,3 @@ int main()
     
     return 0;
 }
-*/

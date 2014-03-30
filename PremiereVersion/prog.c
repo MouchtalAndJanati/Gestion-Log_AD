@@ -31,6 +31,7 @@ _Log TabstrLog[100];
 int n = 0;
 
 
+
 void Print(int i)
 
 {
@@ -58,11 +59,13 @@ void Print(int i)
 }
 
 
+
 void RemplirStructure(FILE * f)
 
 {
-    while ( feof(f) == 0) 
-  {
+ 
+   while ( feof(f) == 0) 
+   {
         TabstrLog[n].TypeEvent = split(f);
    
          
@@ -85,9 +88,10 @@ void RemplirStructure(FILE * f)
           n++;
     
   
-}
+ }
 
-   }
+
+ }
 
 
 
@@ -106,13 +110,14 @@ void ChercherParID(int Id)
             
            Print(i);
             
-        return;
+           return;
 
-      }
+        }
 
     }
 
 }
+
 
  
 void ChercherTypeEvent(char * event)
@@ -129,26 +134,27 @@ void ChercherTypeEvent(char * event)
   		 Print(i);
            
         
-   }
+        }
     }
+
 
    
  }
 
 
 
+
 int main()
 
 {
-    FILE * f = ouvrirUnFichier("test.txt");
+      FILE * f = ouvrirUnFichier("test.txt");
 
    
     RemplirStructure(f);
-   // Print(0);
-
-    ChercherTypeEvent("Erreur");
+  
+       ChercherTypeEvent("Erreur");
     
   
-   return 0;
+       return 0;
 
 }
