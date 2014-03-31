@@ -12,11 +12,11 @@
     Nous n'expliquons ni l'installation ni la configuration d'un serveur Microsoft.
 
     Par contre, le fichier nommé "Install.txt" contient un script qui permet d'installer Active directory.
-    Le fichier nommé DHCP.  C' est un programme qui permet de lire le fichier LOG du serveur DHCP.
+    Le fichier nommé DHCP est un programme qui permet de lire le fichier LOG du serveur DHCP.
 
     Nous avons écrit une première  version qui lit les logs à partir d'un fichier *.txt et une deuxième version qui lit les logs à partir   
     d'un fichier *.evtx.
-    Il est possible qu'il y est des bugs, donc toute proposition sera la bienvenue.  :-)
+   
 
 
 

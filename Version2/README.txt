@@ -14,6 +14,6 @@
  Le programme commence par afficher un Menu, et selon le choix fait, le programme va chercher les 
  informations dans les fichiers.
 
-Il est possible que le programme comporte des bugs, toute proposition sera la bienvenue  :-) :-)
+
 
 #############################################################################################################
